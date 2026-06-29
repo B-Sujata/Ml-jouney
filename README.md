@@ -1,2 +1,2 @@
-# Ml-jouney
-Tracking my 6 months ML- series
+# ML-jouney
+Day 1 — starting my ML engineer journey.
