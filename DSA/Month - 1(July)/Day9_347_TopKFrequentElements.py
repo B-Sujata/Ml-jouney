@@ -146,7 +146,7 @@ This solution is correct in terms of logic, but it is not the optimal solution f
 
 '''
 
-
+# But thi is not an optimal solution and while trying to find out the optimal solution I leanrt a really cool DSA Trick now let's try implementing it
         
         
 

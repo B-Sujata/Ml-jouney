@@ -81,6 +81,7 @@ At every step, result always contains the correctly merged intervals processed s
 
 This works because the intervals are sorted, so if the current interval overlaps with any previous interval, it can only overlap with the last merged interval.
 
+
 '''
         
         

@@ -102,5 +102,38 @@ Overall Space Complexity: O(n)
 
 '''
 
+# Clean Code
+
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        length = 0
+        count =0
+        left = 0
+       
+        substring = set()
+
+        if s == "":
+            return 0
+        if len(s)==1:
+            return 1
+        
+        for index, ch in enumerate(s):
+            if ch not in substring:
+                substring.add(ch)
+                
+            else:
+                while ch in substring:
+                    substring.remove(s[left])
+                    left = left+1
+                substring.add(ch)
+                
+            diff = index -left+1
+            if diff>length:
+                length = diff
+                
+
+        return length
+
+        
 
         
