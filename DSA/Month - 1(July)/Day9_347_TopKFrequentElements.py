@@ -150,4 +150,118 @@ This solution is correct in terms of logic, but it is not the optimal solution f
         
         
 
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        n = len(nums)
+        freq = {}
+        answer = []
+        for num in nums:
+            if num in freq:
+                freq[num]+=1
+            else:
+                freq[num] = 1
+
+        buckets = [[] for _ in range(n+1)]
+        for element, frequency in freq.items():
+            buckets[frequency].append(element)
+
+        for i in range(len(buckets)-1, 0, -1):
+            for element in buckets[i]:
+                answer.append(element)
+                k-=1
+                if k==0:
+                    return answer
+
+        
+
+
+
+
+'''
+Approach
+Count the frequency of each element using a hash map (dictionary).
+Create n + 1 buckets, where the index represents the frequency of occurrence.
+Store every element in the bucket corresponding to its frequency.
+Traverse the buckets from the highest frequency to the lowest frequency.
+Add elements from the buckets to the answer until k elements have been collected.
+Return the answer.
+Algorithm
+Initialize an empty dictionary freq.
+Traverse the input array and count the frequency of each element.
+Create a list of buckets of size n + 1, where each bucket is an empty list.
+For every (element, frequency) pair in the dictionary:
+Insert the element into buckets[frequency].
+Traverse the buckets from index n down to 1.
+For each element present in the current bucket:
+Append it to the answer list.
+Decrement k.
+If k becomes 0, return the answer.
+Return the answer.
+Time Complexity
+
+Let:
+
+n = number of elements in the input array.
+m = number of distinct elements.
+Frequency counting
+O(n)
+Filling the buckets
+
+Each distinct element is inserted into exactly one bucket.
+
+O(m)
+Traversing the buckets
+Outer loop traverses n buckets.
+O(n)
+Inner loop visits each distinct element only once.
+O(m)
+
+Therefore,
+
+O(n)+O(m)+O(n+m)
+
+Since m ≤ n,
+
+Overall Time Complexity
+O(n)
+	​
+
+Space Complexity
+Frequency dictionary
+
+Stores the frequency of each distinct element.
+
+O(m)
+Buckets
+
+There are n + 1 buckets.
+
+O(n)
+Answer list
+
+Stores k elements.
+
+O(k)
+
+Therefore,
+
+O(m+n+k)
+
+Since m ≤ n and k ≤ n,
+
+Overall Space Complexity
+O(n)
+	​
+
+Pattern
+
+Bucket Sort (Frequency Bucket)
+
+One small suggestion for interviews: in the approach, you can mention why bucket sort is efficient.
+
+Instead of repeatedly searching for the maximum frequency or sorting all frequencies, elements are grouped into buckets based on their frequency. Traversing the buckets from highest to lowest frequency allows us to collect the top k frequent elements in linear time.
+
+'''
+        
+        
         
