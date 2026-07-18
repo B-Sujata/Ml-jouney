@@ -14,3 +14,5 @@ def BFS(self):
         if current_node.right is not None:
             queue.append(current_node.right)
     return results
+
+# DFS
