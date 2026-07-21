@@ -86,4 +86,4 @@ class Solution:
 
             
         
-        
+# Similar question withn some variation came in my infosys test yesterday
