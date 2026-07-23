@@ -97,4 +97,96 @@ Space Complexity: O(1)
 
 
 '''
+
+## THe optimal Solution
+
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        answer = 0
+        reversed_num = 0
+        if x==0:
+            return True
+        if x<0:
+            return False
+        if x%10==0:
+            return False
+        while(x>answer):
+            reversed_num= x%10
+            x = x//10
+            
+            answer = answer*10+reversed_num
+            
+        if x == answer or x==answer//10:
+            return True
+        return False
+
+
+'''
+Approach
+
+Instead of reversing the entire number, we reverse only half of the digits.
+
+If the number is negative, it cannot be a palindrome.
+If the number ends with 0 (except 0 itself), it also cannot be a palindrome because a palindrome cannot start with 0.
+Repeatedly extract the last digit of the number and build the reversed second half.
+Continue this process until the reversed half becomes greater than or equal to the remaining half.
+For numbers with an even number of digits, both halves should be equal.
+For numbers with an odd number of digits, the middle digit does not affect the palindrome property, so remove it from the reversed half using integer division (// 10) before comparing.
+
+This approach avoids reversing the entire number, making it more efficient.
+
+Algorithm
+If the number is negative, return False.
+If the number ends with 0 and is not 0, return False.
+Initialize two variables:
+answer = 0 (stores the reversed second half of the number)
+reversed_num = 0 (stores the current extracted digit)
+While the remaining number is greater than the reversed half:
+Extract the last digit using % 10.
+Remove the last digit from the original number using // 10.
+Append the extracted digit to answer.
+After the loop:
+If x == answer, return True (even number of digits).
+Else if x == answer // 10, return True (odd number of digits).
+Otherwise, return False.
+Time Complexity
+O(log n)
+Explanation:
+In each iteration, one digit is removed from the original number using:
+x = x // 10
+Since a number with d digits requires d iterations to remove all digits, and this algorithm only processes about half of the digits, the loop runs approximately d / 2 times.
+The number of digits in an integer n is:
+log
+10
+	​
+
+(n)+1
+
+Ignoring constants in Big-O notation:
+
+O(
+2
+logn
+	​
+
+)=O(logn)
+
+Therefore, the time complexity is O(log n).
+
+Space Complexity
+O(1)
+Explanation:
+
+The algorithm uses only a constant amount of extra space:
+
+answer
+reversed_num
+x
+
+No additional data structures (arrays, lists, stacks, etc.) are used, and the amount of memory remains constant regardless of the size of the input.
+
+Therefore, the space complexity is O(1).
+
+
+'''
         
