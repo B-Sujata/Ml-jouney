@@ -139,5 +139,155 @@ If an interviewer asks, "Why do you iterate from largest to smallest?", a concis
 
 "Since the problem asks for the greatest common divisor string, checking candidate lengths in descending order guarantees that the first valid candidate found is the largest one. This allows the algorithm to terminate early without checking smaller candidates."
 
+O(min(m,n)×(m+n))​
+so like will it be equal to O(n) only?
+
+Great question! And this is where many students get confused about Big-O analysis.
+
+The answer is No, it is not O(n).
+
+Let's analyze it together.
+
+Your Time Complexity
+
+You have:
+
+O(min(m,n)×(m+n))
+
+Suppose:
+
+m = len(str1)
+n = len(str2)
+Case 1: Both strings have almost the same length
+
+Suppose
+
+m = 1000
+n = 1000
+
+Then
+
+min(m,n) = 1000
+m+n = 2000
+
+So the complexity becomes
+
+1000 × 2000 = 2,000,000
+
+Ignoring constants:
+
+O(n
+2
+)
+
+So it is definitely not O(n).
+
+Case 2: One string is much smaller
+
+Suppose
+
+m = 10
+n = 1000
+
+Then
+
+min(m,n) = 10
+m+n = 1010
+
+Complexity:
+
+10 × 1010 = 10100
+
+This is much smaller than 1000
+2
+.
+
+That's why we write
+
+O(min(m,n)×(m+n))
+
+instead of forcing it into a single variable.
+
+If both strings are represented by one variable
+
+In interviews, we often assume
+
+m ≈ n
+
+Then
+
+min(m,n) = n
+m+n = 2n
+
+So
+
+n × 2n
+
+becomes
+
+2n²
+
+Ignoring constants:
+
+O(n
+2
+)
+	​
+
+Why isn't it O(n)?
+
+Because you have:
+
+An outer loop running up to min(m,n) times.
+Inside that loop, string multiplication and comparison take linear time.
+
+So it's roughly:
+
+Loop × Work per iteration
+
+↓
+
+O(n) × O(n)
+
+↓
+
+O(n²)
+A useful rule for interviews
+
+Whenever you see something like:
+
+for ...:          # O(n)
+    compare_string()   # O(n)
+
+or
+
+for ...:
+    s * k
+
+Ask yourself:
+
+"Is there an O(n) operation inside an O(n) loop?"
+
+If yes, the complexity is usually:
+
+O(n
+2
+)
+	​
+
+For your notes
+General case: 
+O(min(m,n)×(m+n))
+	​
+
+If m≈n: 
+O(n
+2
+)
+	​
+
+
+This is the form most interviewers expect if both strings are treated as having approximately the same length.
+
 
 '''
