@@ -31,3 +31,4 @@ Space Complexity: O(n)
 
             
 # THis is not an optimal solution
+# The optimal solution of this problem invoves using DP
