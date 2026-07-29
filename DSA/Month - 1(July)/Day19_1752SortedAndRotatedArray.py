@@ -10,4 +10,5 @@ class Solution:
             if nums ==nums.sort():
                 return True
         return False
-        
+
+# This doesn't give right answer and fails for many test cases , the problem I was reassigning the values insteading of rotating the array
