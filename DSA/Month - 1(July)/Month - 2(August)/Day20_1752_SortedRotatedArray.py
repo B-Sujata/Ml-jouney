@@ -186,3 +186,53 @@ Overall Space Complexity:
 O(n)
 
 '''
+
+# Optimal Solution
+
+class Solution:
+    def check(self, nums: List[int]) -> bool:
+        count = 0
+        for i in range(len(nums)-1):
+            if nums[i]>nums[i+1]:
+                count+=1
+        
+        if count==0:
+            return True
+                
+        if count ==1:
+            if nums[0]>=nums[-1]:
+                return True
+        return False
+
+           
+
+
+
+'''
+Approach
+
+A sorted array has no order violations, whereas a rotated sorted array has exactly one order violation. Traverse the array once and count the number of indices where the current element is greater than the next element. Since the array is circular, also compare the last element with the first element. If the total number of order violations is at most one, the array can be obtained by rotating a sorted array; otherwise, it cannot.
+
+Algorithm
+Initialize a variable count = 0.
+Traverse the array from index 0 to n-2:
+If nums[i] > nums[i+1], increment count.
+Compare the last and first elements:
+If nums[-1] > nums[0], increment count.
+If count <= 1, return True.
+Otherwise, return False.
+Time Complexity
+Single traversal of the array: O(n)
+One additional comparison between the last and first elements: O(1)
+
+Overall Time Complexity: O(n)
+
+Space Complexity
+Only one integer variable (count) is used.
+No extra arrays or data structures are created.
+
+Overall Space Complexity: O(1)
+
+This is the optimal solution for the problem because it examines each element only once and uses constant extra space.
+
+'''
