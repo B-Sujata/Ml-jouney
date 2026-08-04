@@ -1,4 +1,4 @@
-## First Attemp
+## First Attemp ---> By left shift
 
 class Solution:
     def check(self, nums: List[int]) -> bool:
@@ -64,3 +64,55 @@ Space Complexity = O(n)
     
     
     '''
+
+# 2nd attempt --> Right shift
+
+class Solution:
+    def check(self, nums: List[int]) -> bool:
+        if nums==sorted(nums):
+            return True
+        i =0
+        
+        while i<len(nums)-1:
+            nums= [nums[-1]]+ nums[:-1]
+            if nums==sorted(nums):
+                return True
+            else:
+                i = i+1
+
+        return False
+
+'''
+Algorithm
+Check if nums is already sorted.
+If yes, return True.
+Initialize a counter i = 0.
+While i < len(nums) - 1:
+
+Perform one right rotation:
+
+nums = [nums[-1]] + nums[:-1]
+If nums == sorted(nums), return True.
+Otherwise, increment i.
+If no rotation results in a sorted array, return False.
+Time Complexity
+
+Let n be the number of elements in the array.
+
+Checking sorted(nums) takes O(n log n).
+One right rotation using slicing takes O(n).
+The loop executes at most n − 1 times.
+
+Therefore,
+
+Time Complexity = O(n × (n log n + n)) = O(n² log n)
+
+Space Complexity
+sorted(nums) creates a new sorted list of size n.
+The right rotation operation also creates a new list of size n.
+
+Hence,
+
+Space Complexity = O(n)
+
+'''
