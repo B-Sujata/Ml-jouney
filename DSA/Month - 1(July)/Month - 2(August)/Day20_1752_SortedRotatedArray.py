@@ -116,3 +116,73 @@ Hence,
 Space Complexity = O(n)
 
 '''
+
+# 3rd attempt
+
+class Solution:
+    def check(self, nums: List[int]) -> bool:
+        if nums==sorted(nums):
+            return True
+        
+        for i in range(len(nums)-1):
+            
+            if nums[i]<=nums[i+1]:
+                continue
+            else:
+                left = nums[:i+1]
+                right = nums [i+1:]
+        if left == sorted(left) and right ==sorted(right):
+            if left[0]>=right[0]:
+                if right[-1]<=left[0]:
+                    return True
+                
+            else:
+                if left[-1]<=right[0]:
+                    return True
+        return False
+        
+       
+            
+'''
+Approach
+First, check if the array is already sorted. If it is, return True.
+Traverse the array to find the point where the order breaks (nums[i] > nums[i+1]). This point represents the possible rotation index.
+Split the array into two parts:
+left = nums[:i+1]
+right = nums[i+1:]
+Check if both subarrays are individually sorted.
+Compare the boundary elements of the two subarrays to verify that they can form a sorted array after rotation.
+If all conditions are satisfied, return True; otherwise, return False.
+Algorithm
+If nums is already sorted, return True.
+Iterate through the array:
+If nums[i] <= nums[i+1], continue.
+Otherwise, split the array into left and right.
+Check whether both left and right are sorted.
+Verify the boundary relationship between the two subarrays.
+If the conditions hold, return True.
+Otherwise, return False.
+Time Complexity
+Checking if the array is sorted:
+sorted(nums) → O(n log n)
+Finding the split point:
+O(n)
+Checking left == sorted(left):
+O(n log n) (in the worst case)
+Checking right == sorted(right):
+O(n log n) (in the worst case)
+
+Overall Time Complexity:
+
+O(n log n)
+
+Space Complexity
+sorted(nums) creates a new list → O(n)
+sorted(left) and sorted(right) also create new lists (overall still proportional to n).
+left and right are slices, which together store n elements.
+
+Overall Space Complexity:
+
+O(n)
+
+'''
