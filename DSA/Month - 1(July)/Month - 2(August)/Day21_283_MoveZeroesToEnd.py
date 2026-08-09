@@ -70,3 +70,80 @@ Aspect	Complexity
 Time	O(n²)
 Space	O(1)
 Approach	Two-pointer / in-place swapping'''
+
+#Optimal Solution
+
+class Solution:
+    def moveZeroes(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        i = 0
+        j = i+1
+        while(j<len(nums)):
+            if nums[i]!=0:
+                i+=1
+                j+=1
+            else:
+                if nums[j]!=0:
+                    nums[i],nums[j] = nums[j], nums[i]
+                    i+=1
+                    j+=1
+                else:
+                    j+=1
+            
+            
+                
+
+'''
+Approach
+
+Use two pointers, i and j, to move all zeroes to the end of the array in-place.
+
+i keeps track of the position where a zero is present and where the next non-zero element should be placed.
+j scans the array ahead of i to find non-zero elements.
+If nums[i] is non-zero, both pointers move forward.
+If nums[i] is zero and nums[j] is non-zero, swap them and move both pointers.
+If both positions contain zeroes, only j moves forward to search for the next non-zero element.
+
+This ensures that every element is processed only once.
+
+Algorithm
+Initialize i = 0 and j = 1.
+Traverse the array while j is within the array.
+If nums[i] is non-zero:
+Increment both i and j.
+Otherwise, nums[i] is zero:
+If nums[j] is non-zero:
+Swap nums[i] and nums[j].
+Increment both i and j.
+If nums[j] is also zero:
+Increment only j.
+Continue until j reaches the end of the array.
+The zeroes are now moved to the end while maintaining the relative order of non-zero elements.
+Complexity
+Time Complexity: O(n)
+
+Both i and j only move forward through the array. Neither pointer moves backward or repeatedly scans the same elements.
+
+Therefore:
+
+Time = O(n)
+
+Space Complexity: O(1)
+
+The algorithm uses only two pointer variables and performs the swaps directly in the original array.
+
+Therefore:
+
+Space = O(1)
+
+Final Summary
+Aspect	Complexity
+Approach	Two Pointers
+Time	O(n)
+Space	O(1)
+Modification	In-place
+Relative order of non-zero elements	Preserved
+
+'''
