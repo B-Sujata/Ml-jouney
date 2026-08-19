@@ -111,3 +111,50 @@ Overall
 Worst-case time complexity: O(nk)
 Worst-case auxiliary space: O(k)
 '''
+
+# Optimal Solution
+
+class Solution:
+    def largestInteger(self, nums: List[int], k: int) -> int:
+        n = len(nums)-1
+        candidate = -1
+        freq = {}
+
+        for num in nums:
+            if num in freq:
+                freq[num]+=1
+            else:
+                freq[num]=1
+
+        if k==len(nums):
+            return max(nums)
+        if k==1:
+            for num in freq:
+                if freq[num]==1:
+                    if num>candidate:
+                        candidate = num
+            return candidate
+        
+        if freq[nums[0]]==1 and freq[nums[n]]==1:
+            return max(nums[0], nums[n])
+        elif freq[nums[0]]>1 and freq[nums[n]]==1:
+            return nums[n]
+        elif freq[nums[0]]==1 and freq[nums[n]]>1:
+            return nums[0]
+        else:
+            return -1
+
+        
+            
+
+        
+           
+        
+       
+
+
+        
+
+        
+        
+        
