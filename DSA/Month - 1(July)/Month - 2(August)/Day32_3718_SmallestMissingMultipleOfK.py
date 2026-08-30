@@ -1,4 +1,9 @@
-
+class Solution:
+    def missingMultiple(self, nums: List[int], k: int) -> int:
+        for i in range(1, len(nums)+2):
+            if k*i not in nums:
+                return k*i
+        
 
 '''
 Approach
@@ -39,4 +44,53 @@ Time	O(n²)
 Space	O(1)
 
 Note: If you convert nums to a set, the same approach can be optimized to O(n) time with O(n) space.
+'''
+# Optimal Solution
+class Solution:
+    def missingMultiple(self, nums: List[int], k: int) -> int:
+        nums_set = set(nums)
+        for i in range(1, len(nums_set)+2):
+            if k*i not in nums_set:
+                return k*i
+        
+'''
+Approach
+
+Use a set to store all elements of nums. A set allows us to check whether an element exists in O(1) average time.
+
+Then, check the multiples of k one by one:
+
+k, 2k, 3k, 4k, ...
+
+The first multiple that is not present in the set is the answer.
+
+We only need to check up to len(nums_set) + 1 multiples because there are only len(nums_set) distinct elements, so at least one of the first len(nums_set) + 1 multiples must be missing.
+
+Algorithm
+Convert nums into a set.
+Iterate i from 1 to len(nums_set) + 1.
+Calculate the current multiple k * i.
+Check whether k * i exists in the set.
+If it does not exist, return k * i.
+Time Complexity
+Creating the set: O(n)
+Checking the multiples: O(n) iterations.
+Each set lookup: O(1) average
+
+Therefore:
+
+Time Complexity: O(n) average.
+
+Space Complexity
+
+The set stores up to n elements.
+
+Space Complexity: O(n)
+
+Final
+Complexity	Value
+Time	O(n) average
+Space	O(n)
+
+This is the optimized version of your original O(n²) solution.
 '''

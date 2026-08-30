@@ -1,3 +1,5 @@
+# I solved this problem in my first attemp only, in just 10 mins without a single error and it got accepted on leetcode instanly and used 0ms time, I'm so happieeeeee......This is an achivement indeed for me....
+
 class Solution:
     def checkDivisibility(self, n: int) -> bool:
         original_num = n

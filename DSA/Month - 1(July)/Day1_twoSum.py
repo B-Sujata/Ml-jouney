@@ -115,6 +115,7 @@ Space: O(1)
 And yes — this is a perfectly valid brute-force solution, just not the optimal one. The dictionary version improves the time to O(n) at the cost of O(n) extra space.
 
 '''
+# Optimal Solution
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
